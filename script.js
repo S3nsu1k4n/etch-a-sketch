@@ -9,6 +9,14 @@ function changeGridSizeDisplay(value=16){
     grid_size_value.textContent = `Grid size: ${value}`;
 }
 
+function getColor(onlyBlack=true){
+    if(onlyBlack){
+        return "black";
+    }
+    else{
+        return `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    }
+}
 
 function createGrid(squares=SQUARES){
     let cell;
@@ -28,7 +36,7 @@ function createGrid(squares=SQUARES){
             cell = document.createElement("div");
             cell.classList.add(`row${row}col${col}`, "cell");
             cell.addEventListener("mouseover", (e) => {
-                e.target.style.background = "black";
+                e.target.style.background = getColor(onlyBlack=false);
             })
             
             div_coll.appendChild(cell);
